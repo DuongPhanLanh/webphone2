@@ -50,7 +50,7 @@ public class editPhoneServlet extends HttpServlet {
 //			phone.setPrice(discount);
 			double price = phone.getPrice();
 //			double discountedPrice = price - (price * (eddiscount / 100.0));
-			double discountedPrice = (price * (eddiscount / 100.0));
+			double discountedPrice =price - (price * (eddiscount / 100.0));
             phone.setTotalPrice(discountedPrice);
 			// -------------------------------------------
 			

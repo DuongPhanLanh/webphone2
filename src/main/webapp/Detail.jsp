@@ -15,17 +15,16 @@
 <%@include file="all_component/navbar.jsp" %>
 	<%
 		user u =(user)session.getAttribute("userobj");
+	
+		int id = Integer.parseInt(request.getParameter("pid"));
+		phoneDAOImpl dao = new phoneDAOImpl(DBConnect.getConn());
+		product p = dao.getPhoneById(id);
 	%>
 <!-- Navigation-->
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
             
-            <%
-			int id = Integer.parseInt(request.getParameter("pid"));
-			phoneDAOImpl dao = new phoneDAOImpl(DBConnect.getConn());
-			product p = dao.getPhoneById(id);
-		    %>
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="img/<%=p.getImg() %>" alt="..." /></div>
                     <div class="col-md-6">
@@ -38,8 +37,19 @@
                         <p class="lead"><%=p.getDescription() %></p>
                         <div class="medium mb-4">Hàng còn: <%=p.getStock() %></div>
                         <div class="d-flex">
+                        	<%
+                        	if(u==null) 
+                        	{%>
+                        		<a class="btn btn-outline-dark mt-auto" href="login.jsp"> Add to cart</a>
+                        		
+                        	<%}
+                        	else 
+                        	{%>
+                        		<a class="btn btn-outline-dark mt-auto" href="cart?pid=<%=p.getId()%>&&uid=<%=u.getId()%>"> Add to cart</a>
+                        	<%}
                         	
-                            <a class="btn btn-outline-dark mt-auto" href="cart?pid=<%=p.getId()%>&&uid=<%=u.getId()%>"> Add to cart</a>
+                        	%>
+                            
                       
                         </div>                       
                     </div>

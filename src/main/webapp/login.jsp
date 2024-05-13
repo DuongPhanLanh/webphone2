@@ -17,7 +17,7 @@
       <div class="col-12">
         <div class="mb-5">
         
-        <h1><a href="index.jsp">ĐĂNG NHẬP</a></h1>
+        <h1><a href="index.jsp">Quay lại</a></h1>
         
           <h2 class="display-5 fw-bold text-center">Sign in</h2>
           <p class="text-center m-0">Don't have an account? <a href="register.jsp">Sign up</a></p>
